@@ -1,4 +1,4 @@
-@section('Title', __('Privacy policy'))
+@section ('Title', __('Privacy policy'))
 
 <x-guest-layout>
     <div class="bg-gray-100 pt-4 dark:bg-gray-900">

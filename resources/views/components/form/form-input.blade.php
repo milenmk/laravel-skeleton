@@ -1,13 +1,13 @@
-@props([
-    "fieldName" => "",
-    "type" => "text",
-    "placeholder" => "",
-    "svgIcon" => null,
-    "required" => false,
-    "value" => "",
-    "fieldClass" => null,
-    "wireModel" => null,
-    "autofocus" => false,
+@props ([
+    'fieldName' => '',
+    'type' => 'text',
+    'placeholder' => '',
+    'svgIcon' => null,
+    'required' => false,
+    'value' => '',
+    'fieldClass' => null,
+    'wireModel' => null,
+    'autofocus' => false
 ])
 
 <input
@@ -17,10 +17,18 @@
     value="{{ $value }}"
     placeholder="{{ __($placeholder) }}"
     @if ($required) required @endif
-    @if ($type === "checkbox")
-        {{ $attributes->merge(["class" => "form-checkbox placeholder:text-white-dark " . $fieldClass]) }}
+    @if ($type === 'checkbox')
+        {{
+            $attributes->merge([
+                'class' => 'form-checkbox placeholder:text-white-dark ' . $fieldClass,
+            ])
+        }}
     @else
-        {{ $attributes->merge(["class" => "form-input placeholder:text-white-dark " . ($svgIcon != null ? "ps-10 " : "") . $fieldClass]) }}
+        {{
+            $attributes->merge([
+                'class' => 'form-input placeholder:text-white-dark ' . ($svgIcon != null ? 'ps-10 ' : '') . $fieldClass,
+            ])
+        }}
     @endif
     @if ($wireModel)
         wire:model="{{ $wireModel }}"
@@ -29,6 +37,6 @@
 />
 @if ($svgIcon)
     <span class="absolute start-4 top-1/2 -translate-y-1/2">
-        @svg("icon-" . $svgIcon)
+        @svg ('icon-' . $svgIcon)
     </span>
 @endif

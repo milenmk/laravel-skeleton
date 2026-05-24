@@ -1,6 +1,6 @@
-@props([
+@props ([
     'title' => '',
-    'data' => '',
+    'data' => ''
 ])
 
 <div class="flex cursor-pointer items-center justify-between" @click="isOpen = !isOpen">
@@ -11,7 +11,7 @@
         x-transition:enter-start="-rotate-90 transform opacity-0"
         x-transition:enter-end="rotate-0 transform opacity-100"
     >
-        @svg('icon-chevron-left')
+        @svg ('icon-chevron-left')
     </div>
     <div
         x-show="isOpen"
@@ -19,7 +19,7 @@
         x-transition:enter-start="rotate-90 transform opacity-0"
         x-transition:enter-end="rotate-0 transform opacity-100"
     >
-        @svg('icon-chevron-down')
+        @svg ('icon-chevron-down')
     </div>
 </div>
 <div

@@ -1,5 +1,5 @@
-@props([
-    'align' => 'right',
+@props ([
+    'align' => 'right'
 ])
 
 <div class="relative inline-flex" x-data="{ open: false }">
@@ -49,10 +49,20 @@
 
         <ul>
             <li>
-                @routeLink('dashboard', ['class' => 'px-3 py-1 text-sm font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400', 'wire:navigate' => true, 'x-active' => true])
+                @routeLink ('dashboard',
+                    [
+                        'class' => 'px-3 py-1 text-sm font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400',
+                        'wire:navigate' => true,
+                        'x-active' => true
+                    ])
             </li>
             <li>
-                @routeLink('profile.show', ['class' => 'px-3 py-1 text-sm font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400', 'wire:navigate' => true, 'x-active' => true])
+                @routeLink ('profile.show',
+                    [
+                        'class' => 'px-3 py-1 text-sm font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400',
+                        'wire:navigate' => true,
+                        'x-active' => true
+                    ])
             </li>
             <li class="mt-2 border-t border-gray-200 dark:border-gray-700/60">
                 <form class="p-0" method="post" action="{{ route('logout') }}">

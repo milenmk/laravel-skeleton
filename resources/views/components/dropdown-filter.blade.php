@@ -1,5 +1,5 @@
-@props([
-    'align' => 'right',
+@props ([
+    'align' => 'right'
 ])
 
 <div class="relative inline-flex" x-data="{ open: false }">

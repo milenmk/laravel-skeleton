@@ -19,7 +19,7 @@ class CookiePolicyController
     {
         $cookieFile = localizedMarkdownPath('cookies.md');
 
-        if ($cookieFile === null || $cookieFile === '' || $cookieFile === '0' || ! file_exists($cookieFile)) {
+        if (in_array($cookieFile, [null, '', '0'], true) || ! file_exists($cookieFile)) {
             abort(404, 'Cookie policy file not found.');
         }
 

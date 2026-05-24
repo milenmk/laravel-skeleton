@@ -1,5 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,13 +14,27 @@ return new class extends Migration
         $tableName = config('email-change-confirmation.table_name', 'email_changes');
         $connection = config('email-change-confirmation.connection');
 
-        Schema::connection($connection)->create($tableName, function (Blueprint $table) {
-            $table->uuid('id')->primary();
+        if (! is_string($tableName)) {
+            $tableName = 'email_changes';
+        }
 
-            // User relationship - flexible to work with different user table structures
-            $userModel = config('email-change-confirmation.user_model', config('auth.providers.users.model'));
-            $userTable = (new $userModel)->getTable();
-            $userKeyType = (new $userModel)->getKeyType();
+        if (! is_string($connection)) {
+            $connection = null;
+        }
+
+        $userModel = config('email-change-confirmation.user_model', config('auth.providers.users.model'));
+
+        if (! is_string($userModel) || ! is_subclass_of($userModel, Model::class)) {
+            throw new RuntimeException('Invalid user model configured.');
+        }
+
+        $user = new $userModel;
+
+        $userTable = $user->getTable();
+        $userKeyType = $user->getKeyType();
+
+        Schema::connection($connection)->create($tableName, function (Blueprint $table) use ($userTable, $userKeyType): void {
+            $table->uuid('id')->primary();
 
             if ($userKeyType === 'int') {
                 $table->unsignedBigInteger('user_id');
@@ -37,7 +54,6 @@ return new class extends Migration
             $table->timestamp('change_denied_at')->nullable();
             $table->timestamps();
 
-            // Indexes for performance
             $table->index('user_id');
             $table->index(['user_id', 'created_at']);
             $table->index('change_confirmed_at');
@@ -49,6 +65,14 @@ return new class extends Migration
     {
         $tableName = config('email-change-confirmation.table_name', 'email_changes');
         $connection = config('email-change-confirmation.connection');
+
+        if (! is_string($tableName)) {
+            $tableName = 'email_changes';
+        }
+
+        if (! is_string($connection)) {
+            $connection = null;
+        }
 
         Schema::connection($connection)->dropIfExists($tableName);
     }

@@ -1,11 +1,11 @@
-@props([
-    "method" => "post",
-    "action" => null,
-    "wireSubmit" => null,
-    "title" => "",
-    "hasFormSection" => false,
-    "formSectionCollapsible" => false,
-    "formSectionHiddenByDefault" => true,
+@props ([
+    'method' => 'post',
+    'action' => null,
+    'wireSubmit' => null,
+    'title' => '',
+    'hasFormSection' => false,
+    'formSectionCollapsible' => false,
+    'formSectionHiddenByDefault' => true
 ])
 
 <form
@@ -14,7 +14,11 @@
             isOpen: {{ $formSectionHiddenByDefault ? "false" : "true" }},
         }"
     @endif
-    {{ $attributes->merge(["class" => "rounded-md border border-[#ebedf2] bg-gray-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]"]) }}
+    {{
+        $attributes->merge([
+            'class' => 'rounded-md border border-[#ebedf2] bg-gray-white p-4 dark:border-[#191e3a] dark:bg-[#0e1726]',
+        ])
+    }}
 >
     @csrf
     @if ($hasFormSection && $formSectionCollapsible)

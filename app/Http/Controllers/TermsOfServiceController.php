@@ -19,7 +19,7 @@ class TermsOfServiceController
     {
         $termsFile = localizedMarkdownPath('terms.md');
 
-        if ($termsFile === null || $termsFile === '' || $termsFile === '0' || ! file_exists($termsFile)) {
+        if (in_array($termsFile, [null, '', '0'], true) || ! file_exists($termsFile)) {
             abort(404, 'TOS file not found.');
         }
 

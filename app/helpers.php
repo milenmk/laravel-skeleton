@@ -11,7 +11,7 @@ if (! function_exists('dispatch_success_notification')) {
         return $livewireComponent->dispatch(
             'success-save',
             type: 'success',
-            title: $message !== '' && $message !== '0' && $message !== [] ? $message : __('Your data is saved successfully'),
+            title: in_array($message, ['', '0', []], true) ? __('Your data is saved successfully') : $message,
         );
     }
 }
@@ -26,9 +26,9 @@ if (! function_exists('dispatch_failure_notification')) {
 if (! function_exists('localizedMarkdownPath')) {
     function localizedMarkdownPath(string $name): ?string
     {
-        $localName = preg_replace('#(\.md)$#i', '.'.app()->getLocale().'$1', $name);
+        $localName = preg_replace('#(\.md)$#i', '.' . app()->getLocale() . '$1', $name);
 
-        return Arr::first([resource_path('markdown/'.$localName), resource_path('markdown/'.$name)],
+        return Arr::first([resource_path('markdown/' . $localName), resource_path('markdown/' . $name)],
             fn ($path): bool => file_exists($path));
     }
 }

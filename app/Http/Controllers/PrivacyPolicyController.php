@@ -19,7 +19,7 @@ class PrivacyPolicyController
     {
         $policyFile = localizedMarkdownPath('policy.md');
 
-        if ($policyFile === null || $policyFile === '' || $policyFile === '0' || ! file_exists($policyFile)) {
+        if (in_array($policyFile, [null, '', '0'], true) || ! file_exists($policyFile)) {
             abort(404, 'Privacy policy file not found.');
         }
 

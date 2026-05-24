@@ -1,4 +1,4 @@
-@section('Title', __('Reset Password'))
+@section ('Title', __('Reset Password'))
 
 <x-guest-layout>
     <div class="dark:bg-dark-custom relative flex items-center justify-center px-6 sm:px-16">

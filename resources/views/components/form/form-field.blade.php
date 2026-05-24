@@ -1,4 +1,4 @@
-@props([
+@props ([
     'fieldName' => '',
     'fieldLabel' => '',
     'fieldType' => 'text',
@@ -9,7 +9,7 @@
     'labelClass' => null,
     'fieldClass' => null,
     'wireModel' => null,
-    'autofocus' => false,
+    'autofocus' => false
 ])
 <label for="{{ $fieldName }}" class="{{ $labelClass }}">
     {{ $fieldLabel }}

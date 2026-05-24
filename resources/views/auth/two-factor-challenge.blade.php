@@ -1,4 +1,4 @@
-@section('Title', __('Two-Factor Authentication'))
+@section ('Title', __('Two-Factor Authentication'))
 
 <x-guest-layout>
     <div class="dark:bg-dark-custom relative flex items-center justify-center px-6 sm:px-16">
@@ -21,7 +21,7 @@
                     <form method="POST" action="{{ route('two-factor.login') }}" x-data="{ recovery: false }">
                         @csrf
 
-                        <div class="mt-4" x-show="! recovery">
+                        <div class="mt-4" x-show="!recovery">
                             <x-form.form-field
                                 fieldName="code"
                                 :fieldLabel="__('Code')"

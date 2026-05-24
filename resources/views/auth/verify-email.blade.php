@@ -1,4 +1,4 @@
-@section('Title', __('Email Verification'))
+@section ('Title', __('Email Verification'))
 
 <x-guest-layout>
     <div class="dark:bg-dark-custom relative flex items-center justify-center px-6 sm:px-16">
@@ -14,7 +14,11 @@
                             {{ __('Email Verification') }}
                         </h1>
                         <p class="text-white-dark text-sm leading-normal font-bold">
-                            {{ __('Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+                            {{
+                                __(
+                                    'Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.',
+                                )
+                            }}
                         </p>
 
                         @if (session('status') == 'verification-link-sent')
@@ -31,13 +35,17 @@
                                 class="bg-success-light border-success dark:bg-success-dark-light relative my-2 flex items-center rounded border p-2 text-white before:absolute before:top-1/2 before:-mt-2 before:border-t-8 before:border-b-8 before:border-l-8 before:border-t-transparent before:border-b-transparent before:border-l-inherit ltr:border-l-[64px] ltr:before:left-0 rtl:border-r-[64px] rtl:before:right-0 rtl:before:rotate-180"
                             >
                                 <span class="absolute inset-y-0 m-auto h-6 w-6 text-white ltr:-left-11 rtl:-right-11">
-                                    @svg('icon-success-exclamation')
+                                    @svg ('icon-success-exclamation')
                                 </span>
                                 <span class="ltr:pl-3 rtl:pr-3">
-                                    {{ __('A new verification link has been sent to the email address you provided in your profile settings.') }}
+                                    {{
+                                        __(
+                                            'A new verification link has been sent to the email address you provided in your profile settings.',
+                                        )
+                                    }}
                                 </span>
                                 <button type="button" @click="showAlert = false">
-                                    @svg('icon-close')
+                                    @svg ('icon-close')
                                 </button>
                             </div>
                         @endif
@@ -55,15 +63,11 @@
 
                     <div class="col-md-12 flex items-center justify-between p-4">
                         <div class="p-4">
-                            <a href="{{ route('profile.show') }}" class="btn btn-primary">
-                                {{ __('Edit Profile') }}
-                            </a>
+                            <a href="{{ route('profile.show') }}" class="btn btn-primary"> {{ __('Edit Profile') }} </a>
                         </div>
                         <form method="POST" action="{{ route('logout') }}" class="inline">
                             @csrf
-                            <button type="submit" class="btn btn-danger">
-                                {{ __('Log Out') }}
-                            </button>
+                            <button type="submit" class="btn btn-danger">{{ __('Log Out') }}</button>
                         </form>
                     </div>
                 </div>
