@@ -1,0 +1,13 @@
+{
+    "include": [
+        "app",
+        "bootstrap",
+        "config",
+        "database",
+        "resources/views",
+        "modules"
+    ],
+    "exclude": [
+        "tests"
+    ]
+}

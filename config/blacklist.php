@@ -1,0 +1,457 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Blacklist Mode
+    |--------------------------------------------------------------------------
+    |
+    | This setting determines which word lists to use when validating user input.
+    | Options:
+    | - 'blacklist': Only use the system blacklist words
+    | - 'profanity': Only use the profanity/offensive words
+    | - 'both': Use both blacklist and profanity words
+    |
+    */
+
+    'mode' => 'both', // Options: 'blacklist', 'profanity', 'both'
+
+    'default_matching' => 'exact', // Options: 'exact', 'fuzzy', 'substitution'
+
+    /*
+    |--------------------------------------------------------------------------
+    | System Blacklist
+    |--------------------------------------------------------------------------
+    |
+    | This array contains system-related words that should be blacklisted when validating
+    | user input. Any field containing these words will be rejected.
+    | These are typically used to prevent username squatting or system impersonation.
+    |
+    */
+    'blacklist' => [
+        // System roles and positions
+        'system',
+        'god',
+        'super',
+        'admin',
+        'admins',
+        'administrator',
+        'administrators',
+        'moderator',
+        'mod',
+        'superuser',
+        'supervisor',
+        'sysadmin',
+        'webmaster',
+        'webadmin',
+        'root',
+        'owner',
+        'master',
+        'manager',
+
+        // Corporate roles
+        'ceo',
+        'cfo',
+        'coo',
+        'cto',
+        'president',
+        'vp',
+        'executive',
+        'director',
+        'chairman',
+        'founder',
+
+        // Department names
+        'marketing',
+        'sales',
+        'support',
+        'helpdesk',
+        'customer',
+        'service',
+        'billing',
+        'finance',
+        'legal',
+        'hr',
+        'security',
+        'tech',
+        'it',
+        'engineering',
+        'development',
+
+        // System terms
+        'abuse',
+        'account',
+        'adm',
+        'all',
+        'contact',
+        'document',
+        'download',
+        'faq',
+        'file',
+        'files',
+        'ftp',
+        'help',
+        'home',
+        'host',
+        'http',
+        'https',
+        'imap',
+        'info',
+        'ldap',
+        'list',
+        'majordomo',
+        'member',
+        'membership',
+        'mis',
+        'news',
+        'noreply',
+        'no-reply',
+        'donotreply',
+        'do-not-reply',
+        'office',
+        'password',
+        'pop',
+        'postfix',
+        'postmaster',
+        'register',
+        'registration',
+        'secure',
+        'security',
+        'sftp',
+        'shop',
+        'smtp',
+        'ssl',
+        'test',
+        'trouble',
+        'usenet',
+        'user',
+        'web',
+        'webserver',
+        'wheel',
+        'vww',
+        'wvw',
+        'wwv',
+        'www',
+        'www-data',
+
+        // Brand protection
+        'official',
+        'staff',
+        'team',
+        'support',
+        'help',
+        'service',
+        'verified',
+        'real',
+        'genuine',
+        'original',
+        'authentic',
+
+        // Common platform names (add your app name here)
+        'facebook',
+        'instagram',
+        'twitter',
+        'tiktok',
+        'youtube',
+        'linkedin',
+        'pinterest',
+        'snapchat',
+        'reddit',
+        'discord',
+        'slack',
+        'github',
+        'gitlab',
+        'bitbucket',
+        'paypal',
+        'stripe',
+        'amazon',
+        'google',
+        'microsoft',
+        'apple',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Profanity List
+    |--------------------------------------------------------------------------
+    |
+    | This array contains profanity, curse words, and offensive terms that should
+    | be blacklisted when validating user input. Any field containing these words
+    | will be rejected.
+    |
+    */
+    'profanity' => [
+        // Common profanity
+        'ass',
+        'asshole',
+        'bastard',
+        'bitch',
+        'bullshit',
+        'crap',
+        'damn',
+        'dick',
+        'douchebag',
+        'fuck',
+        'fucking',
+        'fucked',
+        'fucker',
+        'fucks',
+        'jackass',
+        'moron',
+        'piss',
+        'shit',
+        'shitty',
+        'shitting',
+        'whore',
+        'cunt',
+        'twat',
+        'wanker',
+        'bollocks',
+        'prick',
+        'pussy',
+        'cock',
+        'motherfucker',
+        'cocksucker',
+        'asshat',
+        'asswipe',
+        'dipshit',
+        'dumbass',
+        'fuckwit',
+        'shithead',
+        'shitface',
+        'shitbag',
+        'dickhead',
+        'dickweed',
+        'dumbfuck',
+        'fuckface',
+        'fuckhead',
+        'motherfucking',
+        'motherfuckers',
+        'bitches',
+        'bitching',
+        'assholes',
+        'assfuck',
+        'buttfuck',
+        'cumshot',
+        'cumslut',
+        'negro',
+        'nigga',
+        'nigger',
+        'faggot',
+        'fag',
+        'dyke',
+        'queer',
+        'homo',
+        'hooker',
+        'hoe',
+        'jizz',
+        'kike',
+        'spic',
+        'wetback',
+        'chink',
+        'gook',
+        'raghead',
+        'towelhead',
+        'paki',
+        'tranny',
+        'slut',
+        'skank',
+        'retard',
+        'retarded',
+        'tard',
+        'spaz',
+        'spastic',
+
+        // Offensive slurs and terms
+        'ass',
+        'asshole',
+        'bastard',
+        'bitch',
+        'bullshit',
+        'crap',
+        'damn',
+        'dick',
+        'douchebag',
+        'fuck',
+        'fucking',
+        'fucked',
+        'fucker',
+        'fucks',
+        'jackass',
+        'moron',
+        'piss',
+        'shit',
+        'shitty',
+        'shitting',
+        'whore',
+        'cunt',
+        'twat',
+        'wanker',
+        'bollocks',
+        'prick',
+        'pussy',
+        'cock',
+        'motherfucker',
+        'cocksucker',
+        'asshat',
+        'asswipe',
+        'dipshit',
+        'dumbass',
+        'fuckwit',
+        'shithead',
+        'shitface',
+        'shitbag',
+        'dickhead',
+        'dickweed',
+        'dumbfuck',
+        'fuckface',
+        'fuckhead',
+        'motherfucking',
+        'motherfuckers',
+        'bitches',
+        'bitching',
+        'assholes',
+        'assfuck',
+        'buttfuck',
+        'cumshot',
+        'cumslut',
+        'negro',
+        'nigga',
+        'nigger',
+        'faggot',
+        'fag',
+        'dyke',
+        'queer',
+        'homo',
+        'hooker',
+        'hoe',
+        'jizz',
+        'kike',
+        'spic',
+        'wetback',
+        'chink',
+        'gook',
+        'raghead',
+        'towelhead',
+        'paki',
+        'tranny',
+        'slut',
+        'skank',
+        'retard',
+        'retarded',
+        'tard',
+        'spaz',
+        'spastic',
+
+        // Internet slang/jargon
+        'wtf',
+        'stfu',
+        'gtfo',
+        'ffs',
+        'lmao',
+        'lmfao',
+        'omfg',
+        'af',
+        'bs',
+
+        // Mild profanity
+        'hell',
+        'heck',
+        'darn',
+        'suck',
+        'sucker',
+
+        // Euphemisms
+        'frick',
+        'freaking',
+        'effing',
+        'wth',
+        'omg',
+
+        // Body parts used offensively
+        'boob',
+        'tit',
+        'cock',
+        'penis',
+        'vagina',
+
+        // Insults
+        'noob',
+        'troll',
+        'pathetic',
+        'worthless',
+        'failure',
+        'scumbag',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Whitelist
+    |--------------------------------------------------------------------------
+    |
+    | This array contains whitelisted words that should not be blacklisted when validating
+    | user input. These words can still appear in fields but won't trigger a validation error.
+    |
+    */
+    'whitelist' => [
+        // 'OpenAI',
+        // 'Laravel',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Ignore patterns
+    |--------------------------------------------------------------------------
+    |
+    | This array contains regex patterns for ignoring certain words during validation.
+    | If any of these patterns match a word, it will be ignored and not considered as invalid.
+    |
+    */
+    'ignore_patterns' => [
+        // '/^foo.*bar$/i',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Advance matching strategies
+    |--------------------------------------------------------------------------
+    |
+    | This array contains advanced strategies for matching words against the blacklist.
+    | Each strategy has its own set of rules and conditions for determining if a word matches.
+    |
+    */
+    'lists' => [
+        'blacklist' => [
+            'terms' => ['spam', 'scam'],
+            'matching' => 'exact',
+        ],
+
+        'profanity' => [
+            'terms' => ['badword'],
+            'matching' => 'fuzzy',
+            'threshold' => 2,
+        ],
+
+        'leetspeak' => [
+            'terms' => ['shit'],
+            'matching' => 'substitution',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Per-Field Rules & Contexts
+    |--------------------------------------------------------------------------
+    |
+    | This array allows you to define custom validation rules for specific fields.
+    | You can specify different modes, whitelist entries, ignore patterns, etc., on a per-field basis.
+    |
+    */
+    'contexts' => [
+        // 'username' => ['blacklist'],
+        // 'comment' => ['blacklist', 'profanity', 'leetspeak'],
+        // 'bio' => ['blacklist'],
+    ],
+];

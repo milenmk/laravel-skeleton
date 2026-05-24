@@ -1,0 +1,351 @@
+/* Leadings */
+.leading-none {
+    --tw-leading: var(--leading-none);
+
+    line-height: var(--leading-none);
+}
+
+.leading-normal {
+    --tw-leading: var(--leading-normal);
+
+    line-height: var(--leading-normal);
+}
+
+.leading-relaxed {
+    --tw-leading: var(--leading-relaxed);
+
+    line-height: var(--leading-relaxed);
+}
+
+.leading-tight {
+    --tw-leading: var(--leading-tight);
+
+    line-height: var(--leading-tight);
+}
+
+.leading-4 {
+    --tw-leading: calc(var(--spacing) * 4);
+
+    line-height: calc(var(--spacing) * 4);
+}
+
+.leading-5 {
+    --tw-leading: calc(var(--spacing) * 5);
+
+    line-height: calc(var(--spacing) * 5);
+}
+
+.leading-7 {
+    --tw-leading: calc(var(--spacing) * 7);
+
+    line-height: calc(var(--spacing) * 7);
+}
+
+/* Font weight */
+.font-extra-small {
+    --tw-font-weight: var(--font-weight-extra-small);
+
+    font-weight: var(--font-weight-extra-small);
+}
+
+.font-small {
+    --tw-font-weight: var(--font-weight-small);
+
+    font-weight: var(--font-weight-small);
+}
+
+.font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+
+    font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+
+    font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+
+    font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+
+    font-weight: var(--font-weight-bold);
+}
+
+/* Font size */
+.text-xs {
+    font-size: var(--text-xs);
+    line-height: 1.5;
+}
+
+.text-sm {
+    font-size: var(--text-sm);
+    line-height: 1.5715;
+}
+
+.text-base {
+    font-size: var(--text-base);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+}
+
+.text-lg {
+    font-size: var(--text-lg);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+}
+
+.text-xl {
+    font-size: var(--text-xl);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+}
+
+.text-2xl {
+    font-size: var(--text-2xl);
+    line-height: 1.33;
+    letter-spacing: -0.01em;
+}
+
+.text-3xl {
+    font-size: var(--text-3xl);
+    line-height: 1.33;
+    letter-spacing: -0.01em;
+}
+
+.text-4xl {
+    font-size: var(--text-4xl);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.text-5xl {
+    font-size: var(--text-5xl);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.text-6xl {
+    font-size: var(--text-6xl);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+/* Roundings */
+.rounded-xl {
+    border-radius: var(--radius-xl);
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+
+.rounded-sm {
+    border-radius: var(--radius-sm);
+}
+
+.rounded-xs {
+    border-radius: var(--radius-xs);
+}
+
+/* Shadows */
+.shadow2 {
+    box-shadow: var(--shadow2);
+}
+
+.shadow3 {
+    box-shadow: var(--shadow3);
+}
+
+.shadow-3xl {
+    box-shadow:
+        0 2px 2px rgb(224 230 237 / 46%),
+        1px 6px 7px rgb(224 230 237 / 46%);
+}
+
+/* Grid */
+.grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+/* Other */
+hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+}
+
+.h1 {
+    @apply text-4xl font-extrabold tracking-tighter;
+}
+
+.h2 {
+    @apply text-3xl font-extrabold tracking-tighter;
+}
+
+.h3 {
+    @apply text-3xl font-extrabold;
+}
+
+.h4 {
+    @apply text-2xl font-extrabold tracking-tight;
+}
+
+.h5 {
+    @apply text-xl font-extrabold tracking-tight;
+}
+
+.h6 {
+    @apply text-lg font-extrabold tracking-tight;
+}
+
+.list-unstyled {
+    padding: var(--spacing) calc(var(--spacing) * 2);
+}
+
+.list-unstyled li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Spacings */
+.spacing-4\.5 {
+    margin: 18px; /* or padding: 18px; depending on how you want to use it */
+}
+
+.space-y-2 & > :not(:last-child) {
+    --tw-space-y-reverse: 0;
+
+    margin-block: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse))
+        calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+}
+
+.space-y-3 & > :not(:last-child) {
+    --tw-space-y-reverse: 0;
+
+    margin-block: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse))
+        calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
+}
+
+.space-y-4 & > :not(:last-child) {
+    --tw-space-y-reverse: 0;
+
+    margin-block: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse))
+        calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
+}
+
+.space-y-5 & > :not(:last-child) {
+    --tw-space-y-reverse: 0;
+
+    margin-block: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse))
+        calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
+}
+
+.space-y-6 & > :not(:last-child) {
+    --tw-space-y-reverse: 0;
+
+    margin-block: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse))
+        calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+}
+
+/* Alpine.js Transition Classes */
+.transition-fade-in {
+    @apply transition duration-100 ease-out;
+}
+
+.transition-fade-in-start {
+    @apply opacity-0;
+}
+
+.transition-fade-in-end {
+    @apply opacity-100;
+}
+
+.transition-fade-out {
+    @apply transition duration-100 ease-in;
+}
+
+.transition-fade-out-start {
+    @apply opacity-100;
+}
+
+.transition-fade-out-end {
+    @apply opacity-0;
+}
+
+/* Slide transitions */
+.transition-slide-in {
+    @apply transition duration-100 ease-out;
+}
+
+.transition-slide-in-start {
+    @apply -translate-x-2 opacity-0;
+}
+
+.transition-slide-in-end {
+    @apply translate-x-0 opacity-100;
+}
+
+.transition-slide-out {
+    @apply transition duration-100 ease-in;
+}
+
+.transition-slide-out-start {
+    @apply translate-x-0 opacity-100;
+}
+
+.transition-slide-out-end {
+    @apply -translate-x-2 opacity-0;
+}
+
+/* Scale transitions */
+.transition-scale-in {
+    @apply transition duration-100 ease-out;
+}
+
+.transition-scale-in-start {
+    @apply scale-90 opacity-0;
+}
+
+.transition-scale-in-end {
+    @apply scale-100 opacity-100;
+}
+
+.transition-scale-out {
+    @apply transition duration-100 ease-in;
+}
+
+.transition-scale-out-start {
+    @apply scale-100 opacity-100;
+}
+
+.transition-scale-out-end {
+    @apply scale-90 opacity-0;
+}

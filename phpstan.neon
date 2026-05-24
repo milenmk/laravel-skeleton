@@ -1,0 +1,20 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+    - phpstan-baseline.neon
+
+parameters:
+    paths:
+        - app/
+        - routes/
+        - database/
+        - tests/
+
+    tips:
+        treatPhpDocTypesAsCertain: false
+
+    level: max
+
+    excludePaths:
+        - app/helpers.php
+        - database/seeders/DatabaseSeeder.php

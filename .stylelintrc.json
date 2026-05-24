@@ -1,0 +1,26 @@
+{
+    "extends": [
+        "stylelint-config-standard"
+    ],
+    "rules": {
+        "import-notation": "string",
+        "nesting-selector-no-missing-scoping-root": false,
+        "at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": [
+                    "tailwind",
+                    "apply",
+                    "variants",
+                    "responsive",
+                    "screen",
+                    "source",
+                    "theme",
+                    "custom-variant"
+                ]
+            }
+        ],
+        "no-descending-specificity": null,
+        "selector-class-pattern": null
+    }
+}
