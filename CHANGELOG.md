@@ -1,3 +1,9 @@
+## v1.3.0
+
+#### Published at: 2026-05-25
+
+- Add js for dark theme support
+
 ## v1.2.0
 
 #### Published at: 2026-05-25
