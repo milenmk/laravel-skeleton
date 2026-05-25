@@ -40,13 +40,6 @@
         x-transition:leave-end="opacity-0"
         x-cloak
     >
-        <div class="mb-1 border-b border-gray-200 px-3 pt-0.5 pb-2 dark:border-gray-700/60">
-            <div class="dark:text-sand-light-2 font-medium text-gray-800">{{ Auth::user()->full_name }}</div>
-            <div class="text-xs text-gray-500 italic dark:text-gray-400">
-                {{ auth()->user()->license->name->label() }}
-            </div>
-        </div>
-
         <ul>
             <li>
                 @routeLink ('dashboard',

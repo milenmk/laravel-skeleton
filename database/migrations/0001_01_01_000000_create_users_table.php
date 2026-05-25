@@ -16,11 +16,16 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table): void {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('profile_cover_path', 2048)->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->index(['name', 'last_name']);
+            $table->index(['name', 'last_name', 'email']);
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table): void {

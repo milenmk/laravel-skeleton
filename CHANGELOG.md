@@ -1,3 +1,11 @@
+## v1.2.0
+
+#### Published at: 2026-05-25
+
+- [NEW] Add last name to user model
+- [NEW] Add profile image to user model
+- [NEW] Add profile cover to user model
+
 ## v1.1.1
 
 #### Published at: 2026-05-24

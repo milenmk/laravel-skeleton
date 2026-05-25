@@ -98,7 +98,6 @@ return [
         'http',
         'https',
         'imap',
-        'info',
         'ldap',
         'list',
         'majordomo',

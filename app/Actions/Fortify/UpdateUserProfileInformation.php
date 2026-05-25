@@ -4,14 +4,19 @@ declare(strict_types=1);
 
 namespace App\Actions\Fortify;
 
+use App\Concerns\ProfileValidationRules;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
+use Milenmk\LaravelBlacklist\Services\BlacklistService;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
+    use ProfileValidationRules;
+
+    public function __construct(protected BlacklistService $blacklistService) {}
+
     /**
      * Validate and update the given user's profile information.
      *
@@ -22,22 +27,27 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     public function update(User $user, array $input): void
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($user->id),
-            ],
+            ...$this->profileRules(),
         ])->validateWithBag('updateProfileInformation');
+
+        $attributes = [
+            'last_name' => 'Last Name',
+            'name' => 'Name',
+            'email' => 'Email',
+        ];
+
+        $blacklistErrors = $this->blacklistService->checkFields($input, null, $attributes);
+
+        if ($blacklistErrors !== []) {
+            throw ValidationException::withMessages($blacklistErrors);
+        }
 
         if ($input['email'] !== $user->email) {
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
                 'name' => $input['name'],
+                'last_name' => $input['last_name'],
                 'email' => $input['email'],
             ])->save();
         }
@@ -52,6 +62,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         $user->forceFill([
             'name' => $input['name'],
+            'last_name' => $input['last_name'],
             'email' => $input['email'],
             'email_verified_at' => null,
         ])->save();

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Concerns\HasProfileAvatar;
+use App\Concerns\HasProfileCover;
 use App\Concerns\HasQueryFilters;
 use App\Contracts\HasSearchableFields;
 use Database\Factories\UserFactory;
@@ -12,6 +13,7 @@ use Eloquent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -24,12 +26,15 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
  *
  * @template-use HasQueryFilters<self>
  */
-#[Fillable(['name', 'email', 'password', 'two_factor_confirmed_at'])]
+#[Fillable(['name', 'last_name', 'email', 'profile_cover_path', 'profile_photo_path', 'password', 'two_factor_confirmed_at'])]
 #[Hidden(['password', 'remember_token', 'two_factor_recovery_codes', 'two_factor_secret'])]
 class User extends Authenticatable implements HasSearchableFields, MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory;
+
+    use HasProfileAvatar;
+    use HasProfileCover;
 
     /** @use HasQueryFilters<self> */
     use HasQueryFilters;
@@ -43,18 +48,24 @@ class User extends Authenticatable implements HasSearchableFields, MustVerifyEma
      *
      * @var list<string>
      */
-    protected static array $searchable = ['name', 'email'];
+    protected static array $searchable = ['name', 'last_name', 'email'];
 
     /**
      * Get the user's initials
      */
     public function initials(): string
     {
-        return Str::of($this->name)
+        $nameInitials = Str::of($this->name)
             ->explode(' ')
-            ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
+            ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
+
+        $lastNameInitials = Str::of($this->last_name)
+            ->explode(' ')
+            ->map(fn (string $name) => Str::of($name)->substr(0, 1))
+            ->implode('');
+
+        return $nameInitials . $lastNameInitials;
     }
 
     /**
@@ -77,5 +88,15 @@ class User extends Authenticatable implements HasSearchableFields, MustVerifyEma
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
         ];
+    }
+
+    /**
+     * Get user full name as attribute.
+     *
+     * @return Attribute<string, never>
+     */
+    protected function fullName(): Attribute
+    {
+        return Attribute::make(get: fn (mixed $value, array $attributes): string => $this->name . ' ' . $this->last_name);
     }
 }

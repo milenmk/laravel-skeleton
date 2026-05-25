@@ -20,6 +20,7 @@ trait ProfileValidationRules
     {
         return [
             'name' => $this->nameRules(),
+            'last_name' => $this->nameRules(),
             'email' => $this->emailRules($userId),
         ];
     }

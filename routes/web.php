@@ -20,3 +20,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('dashboard');
     })->name('dashboard')->label(__('Dashboard'));
 });
+
+// Profile routes
+Route::prefix('profile')
+    ->middleware('auth')
+    ->group(function (): void {
+        // Show
+        Route::view('', '/profile/show')->name('profile.show')->label(__('Settings'));
+    });

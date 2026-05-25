@@ -11,6 +11,7 @@
     "require": {
         "php": "^8.3",
         "blade-ui-kit/blade-icons": "^1.10",
+        "intervention/image": "^4.1",
         "laravel/fortify": "^1.37",
         "laravel/framework": "^13.8",
         "laravel/tinker": "^3.0",
@@ -35,15 +36,6 @@
         "squizlabs/php_codesniffer": "^4.0",
         "tightenco/duster": "^3.4"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "test-packages/milenmk/*",
-            "options": {
-                "symlink": true
-            }
-        }
-    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",
